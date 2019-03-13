@@ -53,7 +53,7 @@ func NewMockClient(body []byte) *MockHTTPClient {
 func SharedRequestTests(t *testing.T, req *http.Request) {
 	assert.Equal(t, req.Host, wrike.DefaultAPIHost)
 	header := req.Header
-	assert.Equal(t, header["Authorization"], "bearer wrike-access-token")
+	assert.Equal(t, header["Authorization"][0], "bearer wrike-access-token")
 }
 
 func TestNewAPI(t *testing.T) {

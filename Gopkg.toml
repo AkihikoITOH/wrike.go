@@ -24,7 +24,14 @@
 #   go-tests = true
 #   unused-packages = true
 
+[[constraint]]
+  name = "gotest.tools"
+  version = "2.3.0"
 
 [prune]
   go-tests = true
   unused-packages = true
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/PuerkitoBio/httpcmw"

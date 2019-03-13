@@ -3,7 +3,7 @@ package wrike
 // DefaultAPIHost is the default API host name.
 const DefaultAPIHost = "app-eu.wrike.com"
 
-// Config contains configuration parameters of the BambooHR API.
+// Config contains configuration parameters of the Wrike API.
 type Config struct {
 	apiAccessToken string
 	apiHost        string
