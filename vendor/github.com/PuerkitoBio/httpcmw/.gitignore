@@ -1,0 +1,9 @@
+# cover/profile output files
+*.out
+
+# test binaries
+*.test
+
+# environment configuration
+.env*
+
