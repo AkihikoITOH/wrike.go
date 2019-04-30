@@ -4,7 +4,7 @@ Go implementation of [Wrike API](https://developers.wrike.com/documentation/api/
 
 ## Documentation
 
-Find documentation with of examples at [GoDoc](https://godoc.org/github.com/AkihikoITOH/wrike.go)
+Find documentation with examples at [GoDoc](https://godoc.org/github.com/AkihikoITOH/wrike.go)
 
 ## Basic usage
 
