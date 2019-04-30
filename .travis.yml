@@ -1,0 +1,17 @@
+language: go
+
+go:
+  - 1.11.x
+  - 1.12.x
+
+env:
+  - GO111MODULE=on
+
+jobs:
+  include:
+    - stage: Verify dependencies
+      script: go mod verify
+    - stage: Test
+      script: go test -coverprofile=c.out
+    - stage: Build
+      script: go build
