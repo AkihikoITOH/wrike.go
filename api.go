@@ -5,6 +5,8 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/httpcmw"
@@ -30,26 +32,64 @@ func NewAPI(config *Config) *API {
 	return &API{config, newHTTPClient()}
 }
 
-func (api *API) get(path string) ([]byte, error) {
+func (api *API) perform(req *http.Request) ([]byte, error) {
+	res, err := api.HTTPClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(res.Body)
+}
+
+func (api *API) get(basePath string, params *url.Values) ([]byte, error) {
+	path := basePath
+	if params != nil {
+		path += fmt.Sprintf("?%s", params.Encode())
+	}
 	req, err := api.newRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	res, err := api.HTTPClient.Do(req)
+	return api.perform(req)
+}
+
+func (api *API) put(path string, params *url.Values) ([]byte, error) {
+	var data io.Reader
+	if params != nil {
+		data = strings.NewReader(params.Encode())
+	} else {
+		data = nil
+	}
+	req, err := api.newRequest(http.MethodPut, path, data)
 	if err != nil {
 		return nil, err
 	}
 
-	return ioutil.ReadAll(res.Body)
+	return api.perform(req)
 }
 
-func (api *API) post(path string, body []byte) ([]byte, error) {
-	return nil, fmt.Errorf("method %s is not implemented yet", http.MethodPost)
+func (api *API) post(path string, params *url.Values) ([]byte, error) {
+	var data io.Reader
+	if params != nil {
+		data = strings.NewReader(params.Encode())
+	} else {
+		data = nil
+	}
+	req, err := api.newRequest(http.MethodPost, path, data)
+	if err != nil {
+		return nil, err
+	}
+
+	return api.perform(req)
 }
 
 func (api *API) delete(path string) ([]byte, error) {
-	return nil, fmt.Errorf("method %s is not implemented yet", http.MethodDelete)
+	req, err := api.newRequest(http.MethodDelete, path, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return api.perform(req)
 }
 
 func (api *API) newRequest(method, path string, body io.Reader) (*http.Request, error) {

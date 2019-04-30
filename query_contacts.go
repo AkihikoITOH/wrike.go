@@ -1,53 +1,35 @@
 package wrike
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 
+	parameters "github.com/AkihikoITOH/wrike.go/parameters"
 	types "github.com/AkihikoITOH/wrike.go/types"
+	"github.com/google/go-querystring/query"
 )
-
-// QueryContactsParams contains parameters that will be passed to QueryContacts API.
-type QueryContactsParams struct {
-	Me       bool
-	Metadata *types.Metadata
-	Deleted  bool
-	Fields   []string
-}
-
-// ToQueryParams converts the QueryContactsParams object to a query params string.
-func (qp *QueryContactsParams) ToQueryParams() string {
-	params := make([]string, 0)
-	if qp.Me {
-		params = append(params, "me=true")
-	}
-	if qp.Metadata != nil {
-		metadata, err := json.Marshal(qp.Metadata)
-		if err == nil {
-			params = append(params, fmt.Sprintf("metadata=%s", string(metadata)))
-		}
-	}
-	if qp.Deleted {
-		params = append(params, "deleted=true")
-	}
-	if len(qp.Fields) > 0 {
-		params = append(params, fmt.Sprintf("fields=[\"%s\"]", strings.Join(qp.Fields, "\",\"")))
-	}
-
-	return strings.Join(params, "&")
-}
 
 // QueryContacts fetches a list of contacts.
 // For details refer to https://developers.wrike.com/documentation/api/methods/query-contacts
-func (api *API) QueryContacts(params *QueryContactsParams) (*types.Contacts, error) {
-	path := "/contacts"
+func (api *API) QueryContacts(params *parameters.QueryContacts) (*types.Contacts, error) {
+	return api.queryContacts("/contacts", params)
+}
 
-	if params != nil {
-		path += fmt.Sprintf("?%s", params.ToQueryParams())
+// QueryContactsByIDs fetches contacts by IDs.
+// For details refer to https://developers.wrike.com/documentation/api/methods/query-contacts
+func (api *API) QueryContactsByIDs(ids parameters.ContactIDSet, params *parameters.QueryContacts) (*types.Contacts, error) {
+	baseURL := fmt.Sprintf("/contacts/%s", strings.Join(ids.ToSlice(), ","))
+
+	return api.queryContacts(baseURL, params)
+}
+
+func (api *API) queryContacts(path string, params *parameters.QueryContacts) (*types.Contacts, error) {
+	qparams, err := query.Values(params)
+	if err != nil {
+		return nil, err
 	}
 
-	data, err := api.get(path)
+	data, err := api.get(path, &qparams)
 	if err != nil {
 		return nil, err
 	}

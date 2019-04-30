@@ -9,24 +9,27 @@ const (
 
 // Contacts represents a list of Wrike contacts.
 type Contacts struct {
-	Kind string     `json:"kind"`
-	Data []*Contact `json:"data"`
+	Kind string    `json:"kind"`
+	Data []Contact `json:"data"`
 }
+
+// ContactID is a string that represents a Wrike Contact ID
+type ContactID string
 
 // Contact represents a Wrike contact.
 type Contact struct {
-	ID        string      `json:"id"`
+	ID        ContactID   `json:"id"`
 	FirstName string      `json:"firstName"`
 	LastName  string      `json:"lastName"`
 	Type      string      `json:"type"`
-	Profiles  []*Profile  `json:"profiles"`
+	Profiles  []Profile   `json:"profiles"`
 	AvatarURL string      `json:"avatarUrl"`
 	Timezone  string      `json:"timezone"`
 	Locale    string      `json:"locale"`
 	Deleted   bool        `json:"deleted"`
 	Me        bool        `json:"me"`
-	MemberIDs []string    `json:"memberIds"`
-	Metadata  []*Metadata `json:"metadata"`
+	MemberIDs []ContactID `json:"memberIds"`
+	Metadata  []Metadata  `json:"metadata"`
 	Phone     string      `json:"phone"`
 }
 
@@ -48,12 +51,6 @@ type Profile struct {
 	External  bool   `json:"external"`
 	Admin     bool   `json:"admin"`
 	Owner     bool   `json:"owner"`
-}
-
-// Metadata represents a metadata, part of Contact object.
-type Metadata struct {
-	Key   string `json:"key"`
-	Value string `json:"value"`
 }
 
 // NewContactsFromJSON parses the given JSON (as byte sequence) and returns a new Contacts.

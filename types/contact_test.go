@@ -87,6 +87,7 @@ func TestNewContactsFromJSON(t *testing.T) {
 
 	assert.Assert(t, err == nil)
 	data := contacts.Data
+	assert.Equal(t, string(data[0].ID), "KUAAAAAQ")
 	assert.Assert(t, data[0].IsPerson())
 	assert.Assert(t, !data[0].IsGroup())
 	assert.Assert(t, data[1].IsGroup())
