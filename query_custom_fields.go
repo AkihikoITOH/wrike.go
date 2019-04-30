@@ -7,7 +7,7 @@ import (
 	types "github.com/AkihikoITOH/wrike.go/types"
 )
 
-// QueryCustomFields fetches a all custom fields in the account.
+// QueryCustomFields fetches all custom fields in the account.
 // For details refer to https://developers.wrike.com/documentation/api/methods/query-custom-fields
 func (api *API) QueryCustomFields() (*types.CustomFields, error) {
 	path := "/customfields"
@@ -20,7 +20,7 @@ func (api *API) QueryCustomFields() (*types.CustomFields, error) {
 	return types.NewCustomFieldsFromJSON(data)
 }
 
-// QueryCustomFieldsByIDs fetches a all custom fields by the given IDs.
+// QueryCustomFieldsByIDs fetches all custom fields by the given IDs.
 // For details refer to https://developers.wrike.com/documentation/api/methods/query-custom-fields
 func (api *API) QueryCustomFieldsByIDs(ids []string) (*types.CustomFields, error) {
 	path := fmt.Sprintf("/customfields/%s", strings.Join(ids, ","))
