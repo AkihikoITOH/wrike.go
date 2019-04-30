@@ -84,7 +84,7 @@ func TestModifyUser(t *testing.T) {
 	}
 	// Check request object
 	assert.Equal(t, client.Request.Method, http.MethodPut)
-	assert.Equal(t, client.Request.URL.String(), "https://app-eu.wrike.com/api/v4/user/KUAAAAHP")
+	assert.Equal(t, client.Request.URL.String(), "https://app-eu.wrike.com/api/v4/users/KUAAAAHP")
 	body, _ := ioutil.ReadAll(client.Request.Body)
 	data, _ := url.QueryUnescape(string(body))
 	assert.Equal(t, data, "profile={\"accountId\":\"IEAAAAAQ\",\"role\":\"Collaborator\",\"external\":true}")

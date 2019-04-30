@@ -118,7 +118,7 @@ func TestQueryAccounts(t *testing.T) {
 	// Check request object
 	assert.Equal(t, client.Request.Method, http.MethodGet)
 	urlStr, _ := url.QueryUnescape(client.Request.URL.String())
-	assert.Equal(t, urlStr, "https://app-eu.wrike.com/api/v4/accounts?fields=[\"customFields\",\"subscription\",\"metadata\"]")
+	assert.Equal(t, urlStr, "https://app-eu.wrike.com/api/v4/account?fields=[\"customFields\",\"subscription\",\"metadata\"]")
 	assert.Equal(t, client.Request.Body, nil)
 	SharedRequestTests(t, client.Request)
 

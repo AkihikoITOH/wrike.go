@@ -11,7 +11,7 @@ import (
 // ModifyUser modifiies a user with given parameters.
 // For details refer to https://developers.wrike.com/documentation/api/methods/modify-user
 func (api *API) ModifyUser(id string, params *parameters.ModifyUser) (*types.Contacts, error) {
-	path := fmt.Sprintf("/user/%s", id)
+	path := fmt.Sprintf("/users/%s", id)
 
 	body, err := query.Values(params)
 	if err != nil {

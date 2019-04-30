@@ -55,7 +55,7 @@ func TestQueryUser(t *testing.T) {
 	}
 	// Check request object
 	assert.Equal(t, client.Request.Method, http.MethodGet)
-	assert.Equal(t, client.Request.URL.String(), "https://app-eu.wrike.com/api/v4/user/KUAAAAHP")
+	assert.Equal(t, client.Request.URL.String(), "https://app-eu.wrike.com/api/v4/users/KUAAAAHP")
 	assert.Equal(t, client.Request.Body, nil)
 	SharedRequestTests(t, client.Request)
 

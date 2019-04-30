@@ -9,7 +9,7 @@ import (
 // QueryUser fetches a User by id.
 // For details refer to https://developers.wrike.com/documentation/api/methods/query-user
 func (api *API) QueryUser(id string) (*types.Contacts, error) {
-	path := fmt.Sprintf("/user/%s", id)
+	path := fmt.Sprintf("/users/%s", id)
 
 	data, err := api.get(path, nil)
 	if err != nil {

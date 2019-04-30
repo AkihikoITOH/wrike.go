@@ -9,10 +9,25 @@ Find documentation with of examples at [GoDoc](https://godoc.org/github.com/Akih
 ## Basic usage
 
 ```go
-import "github.com/AkihikoITOH/wrike.go"
+package main
 
-conf := wrike.NewConfig("wrike-access-token", "")
-api := wrike.NewAPI(conf)
+import (
+	"fmt"
 
-user := api.QueryUser("KUAAAAHP")
+	"github.com/AkihikoITOH/wrike.go"
+)
+
+func main() {
+    conf := wrike.NewConfig("wrike-access-token", "")
+    api := wrike.NewAPI(conf)
+
+    user, err := api.QueryUser("KUAAAA3E")
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(user.Kind)                      // => "users"
+    fmt.Println(user.Data[0].ID)                // => "KUAAAA3E"
+    fmt.Println(user.Data[0].Profiles[0].Email) // => "kqri7kgjlb@y21z0uysjx.com"
+}
 ```
