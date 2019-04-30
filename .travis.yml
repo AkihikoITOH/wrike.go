@@ -12,6 +12,6 @@ jobs:
     - stage: Verify dependencies
       script: go mod verify
     - stage: Test
-      script: go test -coverprofile=c.out
+      script: go test -coverprofile=c.out -v ./...
     - stage: Build
       script: go build
