@@ -1,10 +1,6 @@
-# wrike.go [![Build Status](https://travis-ci.org/AkihikoITOH/wrike.go.svg?branch=master)](https://travis-ci.org/AkihikoITOH/wrike.go)
+# wrike.go [![Build Status](https://travis-ci.org/AkihikoITOH/wrike.go.svg?branch=master)](https://travis-ci.org/AkihikoITOH/wrike.go) [![GoDoc](https://godoc.org/github.com/AkihikoITOH/wrike.go?status.svg)](https://godoc.org/github.com/AkihikoITOH/wrike.go) [![Go Report Card](https://goreportcard.com/badge/github.com/AkihikoITOH/wrike.go)](https://goreportcard.com/report/github.com/AkihikoITOH/wrike.go)
 
 Go implementation of [Wrike API](https://developers.wrike.com/documentation/api/overview) client
-
-## Documentation
-
-Find documentation with examples at [GoDoc](https://godoc.org/github.com/AkihikoITOH/wrike.go)
 
 ## Basic usage
 
