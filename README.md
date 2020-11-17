@@ -8,20 +8,20 @@ Go implementation of [Wrike API](https://developers.wrike.com/documentation/api/
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/AkihikoITOH/wrike.go"
+  "github.com/AkihikoITOH/wrike.go"
 )
 
 func main() {
-    conf := wrike.NewConfig("wrike-access-token", "") // Default host name is "app-eu.wrike.com"
-		// To set a different host name:
-    // conf := wrike.NewConfig("wrike-access-token", "www.wrike.com")
-    api := wrike.NewAPI(conf)
+  conf := wrike.NewConfig("wrike-access-token", "") // Default host name is "app-eu.wrike.com"
+  // To set a different host name:
+  // conf := wrike.NewConfig("wrike-access-token", "www.wrike.com")
+  api := wrike.NewAPI(conf)
 
-    user, err := api.QueryUser("KUAAAA3E")
+  user, err := api.QueryUser("KUAAAA3E")
     if err != nil {
-        panic(err)
+      panic(err)
     }
 
     fmt.Println(user.Kind)                      // => "users"
