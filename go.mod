@@ -1,5 +1,7 @@
 module github.com/AkihikoITOH/wrike.go
 
+go 1.14
+
 require (
 	github.com/PuerkitoBio/httpcmw v0.0.0-20160804162132-14ea05227e16
 	github.com/google/go-querystring v1.0.0
