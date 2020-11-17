@@ -100,6 +100,7 @@ func (api *API) newRequest(method, path string, body io.Reader) (*http.Request, 
 	}
 
 	req.Header.Add("Authorization", fmt.Sprintf("bearer %s", api.Config.APIAccessToken()))
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
 	return req, err
 }
