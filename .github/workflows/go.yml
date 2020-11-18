@@ -40,5 +40,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: coverage.html
+        name: coverage
         path: coverage.html
