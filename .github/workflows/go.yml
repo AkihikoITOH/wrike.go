@@ -33,7 +33,7 @@ jobs:
       run: go mod verify
       
     - name: Build
-      run: go build
+      run: go mod vendor; go build
 
     - name: Test
       run: go test
