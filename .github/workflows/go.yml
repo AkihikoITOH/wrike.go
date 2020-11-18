@@ -33,7 +33,7 @@ jobs:
       run: go mod verify
       
     - name: Build
-      run: go mod vendor; go build
+      run: go build -v ./...
 
     - name: Test
-      run: go test
+      run: go test -coverprofile=c.out -v ./...
