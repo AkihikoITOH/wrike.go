@@ -1,4 +1,4 @@
-# wrike.go ![Go](https://github.com/AkihikoITOH/wrike.go/workflows/Go/badge.svg?branch=master) [![PkgGoDev](https://pkg.go.dev/badge/github.com/AkihikoITOH/wrike.go)](https://pkg.go.dev/github.com/AkihikoITOH/wrike.go) [![Go Report Card](https://goreportcard.com/badge/github.com/AkihikoITOH/wrike.go)](https://goreportcard.com/report/github.com/AkihikoITOH/wrike.go)
+# wrike.go [![Go](https://github.com/AkihikoITOH/wrike.go/workflows/Go/badge.svg?branch=master)](https://github.com/AkihikoITOH/wrike.go/actions) [![PkgGoDev](https://pkg.go.dev/badge/github.com/AkihikoITOH/wrike.go)](https://pkg.go.dev/github.com/AkihikoITOH/wrike.go) [![Go Report Card](https://goreportcard.com/badge/github.com/AkihikoITOH/wrike.go)](https://goreportcard.com/report/github.com/AkihikoITOH/wrike.go)
 
 Go implementation of [Wrike API](https://developers.wrike.com/documentation/api/overview) client
 
