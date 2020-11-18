@@ -36,4 +36,9 @@ jobs:
       run: go mod vendor; go build
 
     - name: Test
-      run: go test -coverprofile=c.out -v ./...
+      run: go test -coverprofile=coverage.out -v ./... && go tool cover -html=coverage.out -o=coverage.html 
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: coverage.html
+        path: coverage.html
